@@ -22,16 +22,6 @@ class DeleteDir extends Command
     protected $description = 'Deletes a directory';
 
     /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
      * Execute the console command.
      *
      * @return mixed
