@@ -4,5 +4,5 @@ enabled:
   - align_equals_minimal
 
 disabled:
-  - align_equals_minima
+  - align_equals
   - unalign_equals
