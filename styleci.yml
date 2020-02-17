@@ -1,4 +1,6 @@
-preset: psr12
+preset: recommended
+
+risky: false
 
 enabled:
   - align_equals_minimal
