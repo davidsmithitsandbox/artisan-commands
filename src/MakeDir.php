@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\File;
 
 class MakeDir extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -36,13 +35,13 @@ class MakeDir extends Command
         }
 
         if (File::isDirectory($path)) {
-            $this->info('Directory already exists: ' . $path);
+            $this->info('Directory already exists: '.$path);
 
             return $this;
         }
 
         File::ensureDirectoryExists($path, 0755, true);
-        $this->info('Directory created: ' . $path);
+        $this->info('Directory created: '.$path);
 
         return $this;
     }
