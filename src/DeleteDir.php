@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\File;
 
 class DeleteDir extends Command
 {
+
     /**
      * The name and signature of the console command.
      *
@@ -27,8 +28,8 @@ class DeleteDir extends Command
      */
     public function handle()
     {
-        $path = $this->argument('path') ?? $this->ask('Path to Directory:');
-        $option = $this->option('i');
+        $path          = $this->argument('path') ?? $this->ask('Path to Directory:');
+        $option        = $this->option('i');
         $argument_path = $this->argument('path');
 
         // Interactive option confirm true
