@@ -1,0 +1,6 @@
+preset: psr12
+
+risky: false
+
+enabled:
+  - align_equals_minimal
