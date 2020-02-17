@@ -1,4 +1,4 @@
 preset: psr12
 
 enabled:
-  - align_equals
+  - align_equals_minimal
