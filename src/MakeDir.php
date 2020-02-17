@@ -13,7 +13,7 @@ class MakeDir extends Command
      *
      * @var string
      */
-    protected $signature = 'make:dir {path} {--i}';
+    protected $signature = 'make:dir {path?} {--i}';
     /**
      * The console command description.
      *
@@ -31,7 +31,7 @@ class MakeDir extends Command
         $path = $this->argument('path');
 
         // Interactive option
-        if ($this->option('i')) {
+        if ($path === null || $this->option('i')) {
             $path = $this->ask('Path to Directory');
         }
 

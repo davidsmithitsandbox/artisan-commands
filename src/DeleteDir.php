@@ -13,7 +13,7 @@ class DeleteDir extends Command
      *
      * @var string
      */
-    protected $signature = 'delete:dir {path} {--i}';
+    protected $signature = 'delete:dir {path?} {--i}';
     /**
      * The console command description.
      *
@@ -28,18 +28,13 @@ class DeleteDir extends Command
      */
     public function handle()
     {
-        $path = $this->argument('path');
+        $path          = $this->argument('path') ?? $this->ask('Path to Directory:');
+        $option        = $this->option('i');
+        $argument_path = $this->argument('path');
 
         // Interactive option confirm true
-        if ($this->option('i') && $this->confirmDelete($path)) {
-            $this->deleteDirectory($path);
-
-            return $this;
-        }
-
-        // Interactive option confirm false
-        if ($this->option('i') && !$this->confirmDelete($path)) {
-            $this->info('No action taken');
+        if (($option || $argument_path === null)) {
+            $this->deleteDirectory($path, true);
 
             return $this;
         }
@@ -52,19 +47,32 @@ class DeleteDir extends Command
     /**
      * Delete a directory and prints
      *
-     * @param $path
+     * @param      $path
+     *
+     * @param null $confirm
      *
      * @return DeleteDir
      */
-    protected function deleteDirectory($path): DeleteDir
+    protected function deleteDirectory($path, $confirm = null)
     {
-        if (File::deleteDirectory($path)) {
+        $confirm_response = true;
+
+        if ($confirm) {
+            $confirm_response = $this->confirmDelete($path);
+        }
+
+        if ($confirm_response === false) {
+            $this->info('No action taken');
+
+            return false;
+        }
+
+        if ($confirm_response || $this->confirmDelete($path)) {
+            File::deleteDirectory($path);
             $this->info("Directory Deleted: $path");
 
             return $this;
         }
-
-        throw new \RuntimeException('File not deleted');
     }
 
     /**
