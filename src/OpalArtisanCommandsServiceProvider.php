@@ -7,7 +7,6 @@ use Illuminate\Support\ServiceProvider;
 
 class OpalArtisanCommandsServiceProvider extends ServiceProvider implements DeferrableProvider
 {
-
     /**
      * Register the package services.
      *
