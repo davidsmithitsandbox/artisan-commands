@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\File;
 
 class DeleteDir extends Command
 {
-
     /**
      * The name and signature of the console command.
      *
@@ -50,13 +49,13 @@ class DeleteDir extends Command
     }
 
     /**
-     * Delete a directory and prints
+     * Delete a directory and prints.
      *
      * @param $path
      *
      * @return DeleteDir
      */
-    protected function deleteDirectory($path): DeleteDir
+    protected function deleteDirectory($path): self
     {
         if (File::deleteDirectory($path)) {
             $this->info("Directory Deleted: $path");
@@ -68,7 +67,7 @@ class DeleteDir extends Command
     }
 
     /**
-     * Get confirmation to delete directory
+     * Get confirmation to delete directory.
      *
      * @param $path
      *
